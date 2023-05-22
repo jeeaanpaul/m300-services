@@ -1,6 +1,6 @@
 # Toolumgebung aufsetzen 
 
-Als erstes habe ich die alle nötigen Tools installiert. 
+Als erstes habe ich alle nötigen Tools installiert. 
 
 - VirtualBox
 - Git
@@ -10,7 +10,10 @@ Als erstes habe ich die alle nötigen Tools installiert.
 Nachdem ich die Ubuntu VM installiert habe, habe ich den Apache Webserver installiert.
 
 ```
+asdfasdf
+```
+
+adafsdf
 
 asdfasdf
-
-```
+asd
