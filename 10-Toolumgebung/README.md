@@ -6,14 +6,12 @@ Als erstes habe ich alle nötigen Tools installiert.
 - Git
 - Vagrant
 
-# Apache Webserver
-Nachdem ich die Ubuntu VM installiert habe, habe ich den Apache Webserver installiert.
+## Apache Webserver 
+Nachdem ich die Ubuntu VM eingerichtet habe, habe ich den Apache Webserver installiert.
 
 ```
-asdfasdf
+$ sudo apt-get install apache2
+$ sudo systemctl status apache2 # status 
+$ sudo systemctl enable apache2 # apache startet autom. nach reboot
 ```
 
-adafsdf
-
-asdfasdf
-asd
