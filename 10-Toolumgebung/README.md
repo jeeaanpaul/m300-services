@@ -15,8 +15,8 @@ Als erstes habe ich alle nötigen Programme für das Modul installiert und mich 
 
 > ### SSH Key
 > Damit ich über SSH auf mein Repository zugreifen kann, habe ich lokal ein SSH Key-Pair erstellt und den Public Key in meinem GitHub Account hinterlegt:
-
-![SSH-Key](../images/sshkey.png)
+> 
+> <img src="../images/sshkey.png"  width="600">
 
 ***
 <br>
@@ -33,7 +33,9 @@ $ sudo systemctl enable apache2 # apache soll automatisch nach dem reboot starte
 ```
 <br>
 
-![Apache-Default-Page](images/../../images/UbuntuVM-Apache-DefaultPage.png)
+
+<img src="../images/UbuntuVM-Apache-DefaultPage.png" width="500">
+
 
 ***
 <br>
@@ -45,10 +47,20 @@ Zur automatisierten Erstellung und Verwaltung von VMs, habe ich das Prgramm Vagr
 
 Als erstes habe ich zum testen einen TestVM Ordner erstellt. Danach habe ich ein Vagrant File erstellt und die VM wie folgt erstellt:
 
-![vagrant-testvm](../images/vagrant-testvm.png)
-***
+<img src="../images/vagrant-testvm.png"  width="500">
+
+
 ### Apache automatisch aufsetzen
-- Im nächsten Schritt habe ich die TestVM nochmals gelöscht und das Vagrant File so angepasst, dass bei der VM installation der Apache Webserver direkt mitinstalliert wird. 
+- Im nächsten Schritt habe ich einen für eine zweite TestVM nochmals einen Ordner erstellt und das Vagrant File so angepasst, dass bei der VM installation der Apache Webserver direkt mitinstalliert wird.
+<img src="../images/vagrantfile-apache-edit.png"  width="500">
 
-![Vagrantfile-Edit](../images/vagrantfile-apache-edit.png)
+<br>
 
+
+- Und wir sehen, apache konnte erfolgreich installiert werden.
+```
+$ systemctl status apache2
+○ apache2.service - The Apache Webserver
+     Loaded: loaded (/usr/lib/systemd/system/apache2.service; disabled; vendor preset: disabled)
+     Active: inactive (dead)
+```
