@@ -64,6 +64,7 @@ Als erstes habe ich zum testen einen TestVM Ordner erstellt. Danach habe ich ein
 
 ### Apache automatisch aufsetzen
 Im nächsten Schritt habe ich einen für eine zweite TestVM nochmals einen Ordner erstellt und das Vagrant File so angepasst, dass bei der VM installation der Apache Webserver direkt mitinstalliert wird.
+
 <img src="../images/10-VagrantfileApacheEdit.png"  width="500">
 
 Und wir sehen, apache konnte erfolgreich installiert werden.
