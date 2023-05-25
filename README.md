@@ -1,7 +1,7 @@
 # M300-Services
 Plattformübergreifende Dienste in ein Netzwerk integrieren
 
-![M300-Banner](images/Banner_M300_GitHub-Repository.png)
+![M300-Banner](images/01-BannerM300GitHubRepo.png)
 
 ## Einleitung:
 Das Modul 300 absolviere ich während meiner Ausbildung zum Informatiker in der Technischen Berufsschule Zürich TBZ. Ich werde über das ganze Modul Github als Ablageort für Dokumentation und Leistungsnachweis verwenden. <br>
