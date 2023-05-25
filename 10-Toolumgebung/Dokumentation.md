@@ -1,13 +1,14 @@
 Kapitel 10: Toolumgebung aufsetzen
 =
 
-## Inhaltsverzeichnis
+## Lernziele
+Einrichtung einer vollständig funktionsfähigen Toolumgebung, welche für dieses Modul benötigt wird.
 
+## Inhaltsverzeichnis
 * 01 - [Vorbereitungen](#01-vorbereitungen)
 * 02 - [Apache Webserver](#02-apache-webserver)
 * 03 - [Vagrant](#03-vagrant)
 * 04 - [Gelerntes](#04-gelerntes)
-
 
 ## Aktueller Wissenstand
 Während meiner Ausbildung wechsle ich jährlich das Team. Mein zweites Lehrjahr verbrachte ich im Team `"Unix & Core Services"`.
@@ -16,30 +17,25 @@ Ich habe während meines zweiten Lehrjahres bereits viel Erfahrungen mit Linux S
 Einer meiner Aufgaben war es, Linux Systeme, welche noch auf einer alten SUSE Linux Enterprise Version waren (SLES11,12...) auf SLES 15 zu upgraden. Da ein Inplace Upgrade auf ein neues Service Pack nicht möglich war, musste ich die Server nebenbei neu aufbauen und anschliessend die Daten migrieren.
 Dort konnte ich viele Systeme von Grund auf neu aufbauen. Ausserdem habe ich auch jegliche Bash-Scripts geschrieben und auch eine ganze oVirt-Virtualisierungsplattform  auf alten HP Servern aufgebaut.
 
-## Lernziele
-
 ***
 
 ## 01 Vorbereitungen:
-
 Als erstes habe ich alle nötigen Programme für das Modul installiert und mich um die Dokumentationsplattform gekümmert.
 
-- GitHub Account & Repository erstellt
-- Git Client installiert
-- VirtualBox installiert
-- Vagrant installiert
-- Visual Studio Code eingerichtet
-  - GitHub Repository geklont
-  - Markdown Extension installiert & zweites Fenser mit MD Preview
-
+* GitHub Account & Repository erstellt
+* Git Client installiert
+* VirtualBox installiert
+* Vagrant installiert
+* Visual Studio Code eingerichtet
+  * GitHub Repository geklont
+  * Markdown Extension installiert & zweites Fenser mit MD Preview
 
 > ### SSH Key
 > Damit ich über SSH auf mein Repository zugreifen kann, habe ich lokal ein SSH Key-Pair erstellt und den Public Key in meinem GitHub Account hinterlegt:
 > 
-> <img src="../images/sshkey.png"  width="600">
+> <img src="../images/10-sshKey.png"  width="600">
 
 ***
-<br>
 
 ## 02 Apache Webserver 
 Nach dem ich alle Vorbereitungen erledigt habe und mich mit Git vertraut machen konnte habe ich mit dem Einrichten der Ubuntu VM für den Webserver begonnen.
@@ -53,12 +49,9 @@ $ sudo systemctl enable apache2 # apache soll automatisch nach dem reboot starte
 ```
 <br>
 
-
-<img src="../images/UbuntuVM-Apache-DefaultPage.png" width="500">
-
+<img src="../images/10-UbuntuVMApacheDefaultPage.png" width="500">
 
 ***
-<br>
 
 ## 03 Vagrant
 Zur automatisierten Erstellung und Verwaltung von VMs, habe ich das Prgramm Vagrant installiert.
@@ -67,14 +60,14 @@ Zur automatisierten Erstellung und Verwaltung von VMs, habe ich das Prgramm Vagr
 
 Als erstes habe ich zum testen einen TestVM Ordner erstellt. Danach habe ich ein Vagrant File erstellt und die VM wie folgt erstellt:
 
-<img src="../images/vagrant-testvm.png"  width="500">
-
+<img src="../images/10-VagrantTestVM.png"  width="500">
 
 ### Apache automatisch aufsetzen
-- Im nächsten Schritt habe ich einen für eine zweite TestVM nochmals einen Ordner erstellt und das Vagrant File so angepasst, dass bei der VM installation der Apache Webserver direkt mitinstalliert wird.
-<img src="../images/vagrantfile-apache-edit.png"  width="500">
+Im nächsten Schritt habe ich einen für eine zweite TestVM nochmals einen Ordner erstellt und das Vagrant File so angepasst, dass bei der VM installation der Apache Webserver direkt mitinstalliert wird.
+<img src="../images/10-VagrantfileApacheEdit.png"  width="500">
 
-- Und wir sehen, apache konnte erfolgreich installiert werden.
+Und wir sehen, apache konnte erfolgreich installiert werden.
+
 ```
 $ systemctl status apache2
 ○ apache2.service - The Apache Webserver
@@ -83,10 +76,10 @@ $ systemctl status apache2
 ```
 
 ## 04 Gelerntes
-
 Da ich bereits im Vorfeld Erfahrungen mit Linux Systemen sammeln konnte, viel mir der Einstieg in dieses Modul nicht so schwer. <br>
 Ich habe jedoch zum ersten Mal mit Vagrant gearbeitet und finde dieses Tool sehr spannend. Man kann innerhalb kurzer Zeit ganze virtuelle Umgebungen aufziehen und diese ganz einfach via Command Shell verwalten. <br>
 Ich hatte bis jetzt auch sehr wenig Erfahrung mit Git Repos und mit Markdown. Ich würde sagen ich finde mich mittlerweile gut zurecht und konnte meine Arbeitsumgebung gut optimieren, sodass ich mein Git Repo und meine Aufträge leicht bearbeiten kann.
+
 > ### Tipp: 
 > Mit ***Ctrl+Shift+V*** kann man in VS Code ein Markdown Preview Fenster anzeigen.  So kann man in Echzeit die gerenderte Markdown Version anschauen.
-> <img src="../images/MarkdownPreview.png">
+> <img src="../images/10-MarkdownPreview.png">
