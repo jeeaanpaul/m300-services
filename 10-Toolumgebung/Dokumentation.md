@@ -6,7 +6,7 @@ Kapitel 10: Toolumgebung aufsetzen
 * 01 - [Vorbereitungen](#01-vorbereitungen)
 * 02 - [Apache Webserver](#02-apache-webserver)
 * 03 - [Vagrant](#03-vagrant)
-* 04 - [Gelerntes]()
+* 04 - [Gelerntes](#04-gelerntes)
 
 
 ## Aktueller Wissenstand
