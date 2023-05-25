@@ -1,6 +1,24 @@
-# Kapitel 10: Toolumgebung aufsetzen 
+Kapitel 10: Toolumgebung aufsetzen
+=
 
-## Vorbereitungen:
+## Inhaltsverzeichnis
+
+* 01 - [Vorbereitungen](#01-vorbereitungen)
+* 02 - [Apache Webserver](#02-apache-webserver)
+* 03 - [Vagrant](#03-vagrant)
+* 04 - [Gelerntes]()
+
+
+## Aktueller Wissenstand
+Während meiner Ausbildung wechsle ich jährlich das Team. Mein zweites Lehrjahr verbrachte ich im Team `"Unix & Core Services"`.
+Das Team ist zuständig für jegliche AIX Systeme & Linux Systeme, SQL Server, unsere VMWare Umgebung und VMWare Backups.
+Ich habe während meines zweiten Lehrjahres bereits viel Erfahrungen mit Linux Systemen sammeln können. <br>
+Einer meiner Aufgaben war es, Linux Systeme, welche noch auf einer alten SUSE Linux Enterprise Version waren (SLES11,12...) auf SLES 15 zu upgraden. Da ein Inplace Upgrade auf ein neues Service Pack nicht möglich war, musste ich die Server nebenbei neu aufbauen und anschliessend die Daten migrieren.
+Dort konnte ich viele Systeme von Grund auf neu aufbauen. Ausserdem habe ich auch jegliche Bash-Scripts geschrieben und auch eine ganze oVirt-Virtualisierungsplattform  auf alten HP Servern aufgebaut.
+
+***
+
+## 01 Vorbereitungen:
 
 Als erstes habe ich alle nötigen Programme für das Modul installiert und mich um die Dokumentationsplattform gekümmert.
 
@@ -21,7 +39,7 @@ Als erstes habe ich alle nötigen Programme für das Modul installiert und mich 
 ***
 <br>
 
-## Apache Webserver 
+## 02 Apache Webserver 
 Nach dem ich alle Vorbereitungen erledigt habe und mich mit Git vertraut machen konnte habe ich mit dem Einrichten der Ubuntu VM für den Webserver begonnen.
 
 Als erstes habe in VirtualBox die ISO angehängt und Ubuntu manuell installiert. Danach habe ich die Repos und Pakete aktualiert und anschliessend den Apache Webserver installiert.
@@ -40,7 +58,7 @@ $ sudo systemctl enable apache2 # apache soll automatisch nach dem reboot starte
 ***
 <br>
 
-## Vagrant
+## 03 Vagrant
 Zur automatisierten Erstellung und Verwaltung von VMs, habe ich das Prgramm Vagrant installiert.
 
 > Für jede VM erstelle ich einen weiteren Ordner im Verzeichnis ../Vagrant/
@@ -64,3 +82,9 @@ $ systemctl status apache2
      Loaded: loaded (/usr/lib/systemd/system/apache2.service; disabled; vendor preset: disabled)
      Active: inactive (dead)
 ```
+
+## 04 Gelerntes
+
+Da ich bereits im Vorfeld Erfahrungen mit Linux Systemen sammeln konnte, viel mir der Einstieg in dieses Modul nicht so schwer. <br>
+Ich habe jedoch zum ersten Mal mit Vagrant gearbeitet und finde dieses Tool sehr spannend. Man kann innerhalb kurzer Zeit ganze virtuelle Umgebungen aufziehen und diese ganz einfach via Command Shell verwalten. <br>
+Ich hatte bis jetzt auch sehr wenig Erfahrung mit Git Repos und mit Markdown. Ich würde sagen ich finde mich mittlerweile gut zurecht und konnte meine Arbeitsumgebung gut optimieren, sodass ich mein Git Repo und meine Aufträge leicht bearbeiten kann.
