@@ -72,9 +72,6 @@ Als erstes habe ich zum testen einen TestVM Ordner erstellt. Danach habe ich ein
 - Im nächsten Schritt habe ich einen für eine zweite TestVM nochmals einen Ordner erstellt und das Vagrant File so angepasst, dass bei der VM installation der Apache Webserver direkt mitinstalliert wird.
 <img src="../images/vagrantfile-apache-edit.png"  width="500">
 
-<br>
-
-
 - Und wir sehen, apache konnte erfolgreich installiert werden.
 ```
 $ systemctl status apache2
