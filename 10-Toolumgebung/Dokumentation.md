@@ -16,6 +16,8 @@ Ich habe während meines zweiten Lehrjahres bereits viel Erfahrungen mit Linux S
 Einer meiner Aufgaben war es, Linux Systeme, welche noch auf einer alten SUSE Linux Enterprise Version waren (SLES11,12...) auf SLES 15 zu upgraden. Da ein Inplace Upgrade auf ein neues Service Pack nicht möglich war, musste ich die Server nebenbei neu aufbauen und anschliessend die Daten migrieren.
 Dort konnte ich viele Systeme von Grund auf neu aufbauen. Ausserdem habe ich auch jegliche Bash-Scripts geschrieben und auch eine ganze oVirt-Virtualisierungsplattform  auf alten HP Servern aufgebaut.
 
+## Lernziele
+
 ***
 
 ## 01 Vorbereitungen:
@@ -85,3 +87,6 @@ $ systemctl status apache2
 Da ich bereits im Vorfeld Erfahrungen mit Linux Systemen sammeln konnte, viel mir der Einstieg in dieses Modul nicht so schwer. <br>
 Ich habe jedoch zum ersten Mal mit Vagrant gearbeitet und finde dieses Tool sehr spannend. Man kann innerhalb kurzer Zeit ganze virtuelle Umgebungen aufziehen und diese ganz einfach via Command Shell verwalten. <br>
 Ich hatte bis jetzt auch sehr wenig Erfahrung mit Git Repos und mit Markdown. Ich würde sagen ich finde mich mittlerweile gut zurecht und konnte meine Arbeitsumgebung gut optimieren, sodass ich mein Git Repo und meine Aufträge leicht bearbeiten kann.
+> ### Tipp: 
+> Mit ***Ctrl+Shift+V*** kann man in VS Code ein Markdown Preview Fenster anzeigen.  So kann man in Echzeit die gerenderte Markdown Version anschauen.
+> <img src="../images/MarkdownPreview.png">
