@@ -42,7 +42,7 @@ Nach dem ich alle Vorbereitungen erledigt habe und mich mit Git vertraut machen 
 
 Als erstes habe in VirtualBox die ISO angehängt und Ubuntu manuell installiert. Danach habe ich die Repos und Pakete aktualiert und anschliessend den Apache Webserver installiert.
 
-```
+```bash
 $ sudo apt-get install apache2
 $ sudo systemctl status apache2 # status des Webservers
 $ sudo systemctl enable apache2 # apache soll automatisch nach dem reboot starten
@@ -69,7 +69,7 @@ Im nächsten Schritt habe ich einen für eine zweite TestVM nochmals einen Ordne
 
 Und wir sehen, apache konnte erfolgreich installiert werden.
 
-```
+```bash
 $ systemctl status apache2
 ○ apache2.service - The Apache Webserver
      Loaded: loaded (/usr/lib/systemd/system/apache2.service; disabled; vendor preset: disabled)
