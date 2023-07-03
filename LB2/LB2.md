@@ -176,3 +176,13 @@ config.vm.provision "shell", inline: <<-SHELL
 SHELL
 end
 ```
+
+Nach und wir sehen nachdem Starten der Vagrantbox sind auch die Firewall Rules aktiv.
+<img src="../images/LB2-7.png"  width="600">
+
+> Da unsere Umgebung nur aus einem System besteht macht es keinen Sinn einen Reverse Proxy einzurichten. Im Fall einer grösseren VM Umgebung, würde ein Reverse Proxy aus sicherheitsgründen Sinn machen.
+
+
+# Reflexion
+
+Ich habe in während der LB2 einige Sachen dazu gelern. Z.B wusste ich nicht, dass ich die Portweiterleitung im Vagrantfile deklarieren muss, damit der Zugriff von meinem Hostsystem auf die VM funktioniert. Ausserdem hatte ich davor nur Erfahrungen mit Suse Linux und RedHat Based Systemen wie AlmaLinux, Fedora, CentOS usw, welche alle .rpm Pakete verwenden und nicht .deb. Daher gab es auch einige Unterschiede mit den Kommandos und Parametern und auch mit den Binaries der installierten Pakete. Ich musste vieles nochmals nachschauen da ich nicht daran gewohnt war. Aber ich habe mich auch extra dafür entschieden einmal auf einer ganz anderen Distribution zu arbeiten als ich sonst kenne. <br>
