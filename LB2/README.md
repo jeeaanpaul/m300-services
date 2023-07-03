@@ -8,7 +8,7 @@ Die LB2 deckt die Kapitel [20-Infrastuktur](../20-Infrastruktur/) und [25-Sicher
 Für die Automatisierung eines Serverdienstes habe ich mich für CUPS entschieden. Mit CUPS können wir einen Printserver einrichten, der Printjobs annimmt und sie an die jeweiligen Printerqueues sendet. <br>
 
 ### Aktueller Wissenstand:
-Ich habe bereits während meines zweiten Lehrjahrs im Unix Team verschiedene Serverdienste zum Testen installieren müssen. Dort habe ich auchschon einmal den CUPS Printerdienst installiert und einen Print2PDF Queue eingerichtet, mit dem ich dann von einem anderen Gerät Dateien als PDF speichern konnte.
+Ich habe bereits während meines zweiten Lehrjahrs im Unix Team verschiedene Serverdienste zum Testen installieren müssen. Dort habe ich auchschon einmal den CUPS Printerdienst installiert und eine Print2PDF Queue eingerichtet, mit dem ich dann von einem anderen Gerät Dateien als PDF speichern konnte.
 
 Das Vagrantfile befindet sich im Ordner ``Vagrant\LB2``. <br>
 
@@ -21,7 +21,7 @@ https://www.fosslinux.com/61850/how-to-set-up-cups-print-server-on-ubuntu.htm
 ### Vorbereitung:
 
 Für diese LB habe ich das Verzeichnis ``LB2`` erstellt. <br>
-Ich verwende Ubunut als Distribution:
+Ich verwende Ubuntu als Distribution:
 
 ```pws
 vagrant init ubuntu/jammy64
@@ -33,7 +33,7 @@ Dort speichere ich dann das Config File für CUPS, damit beim Starten der Vagran
 ```pws
 mkdir config
 ```
-> ### VM einmal manuell erstellen & das Vagrantfile vorbereiten:
+### VM einmal manuell erstellen & das Vagrantfile vorbereiten:
 ```pws
 vagrant up
 ```
@@ -91,7 +91,7 @@ Danach habe ich den Dienst nochmals neu gestartet:
 
 > ## Erstes Problem:
 > Ich habe versucht von meinem Hostsystem aus auf das CUPS Interfac zuzugreiffen, jedoch ohne Erfolg. <br>
-> Das Problem war die Portweiterleitung. Damit ich auf das Webinterface von CUPS zugreifen kann muss ich das erst im Vagrantfile definieren.
+> Das Problem war die Portweiterleitung. Damit ich auf das Webinterface von CUPS zugreifen kann muss ich das erst im Vagrantfile definieren. <br>
 > <img src="../images/LB2-3.png"  width="600">
 
 Jetzt wo ich das Konfigurationsfile angepasst habe und das Vagrantfile auch stimmt, versuche ich auf das Webinterface zuzugreiffen:
