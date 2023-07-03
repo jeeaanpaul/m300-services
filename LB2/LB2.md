@@ -129,3 +129,50 @@ Und wie wir im folgenden Screenshot sehen funktioniert alles:
 
 
 ## Sicherheit
+Im nächsten Schritt versuchen wir unsere Vagrant Umgebung im Thema Sicherheit zu optimieren. <br>
+
+Bei der Installation von Ubuntu wird standartmässig die ufw Firewall direkt mitinstalliert. Mithilfe von ufw können wir den Zugriff von Aussen und von Innen nach Aussen regulieren. <br>
+
+In diesem Fall möchten wir **SSH** und den **Port 631** erlauben, da wir 1. auf die VM zugreiffen möchten um allenfall Änderungen durchzuführen und 2. da unser CUPS Dienst den Port 631 für das Webinterface benötigt. <br>
+
+Falls später neue Dienste dazukommen, kann man die Firewall Rules jederzeit erweitern. <br>
+
+```bash
+vagrant@ubuntu-jammy:~$ sudo ufw allow ssh
+Rule added
+Rule added (v6)
+vagrant@ubuntu-jammy:~$ sudo ufw allow 631
+Rule added
+Rule added (v6)
+vagrant@ubuntu-jammy:~$ sudo ufw default deny incoming
+vagrant@ubuntu-jammy:~$ sudo ufw enable
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+vagrant@ubuntu-jammy:~$ sudo ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere
+631                        ALLOW       Anywhere
+22/tcp (v6)                ALLOW       Anywhere (v6)
+631 (v6)                   ALLOW       Anywhere (v6)
+
+```
+
+All diese Commands füge ich noch dem Shell Script im Vagrantfile hinzu, damit der Zugriff schon beim erstellen der VM geregelt ist.
+
+```ruby
+config.vm.provision "shell", inline: <<-SHELL
+  sudo apt-get update
+  sudo apt-get install -y cups
+  sudo systemctl start cups
+  sudo systemctl enable cups
+  sudo cp /vagrant/config/cupsd.conf /etc/cups/cupsd.conf
+  sudo systemctl restart cups
+  sudo ufw allow ssh
+  sudo ufw allow 631
+  sudo ufw default deny incoming
+SHELL
+end
+```
