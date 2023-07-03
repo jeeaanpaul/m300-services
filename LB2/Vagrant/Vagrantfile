@@ -78,5 +78,8 @@ config.vm.provision "shell", inline: <<-SHELL
   sudo systemctl enable cups
   sudo cp /vagrant/config/cupsd.conf /etc/cups/cupsd.conf
   sudo systemctl restart cups
+  sudo ufw allow ssh
+  sudo ufw allow 631
+  sudo ufw default deny incoming
 SHELL
 end
