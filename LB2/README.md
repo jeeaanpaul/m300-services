@@ -1,7 +1,7 @@
 LB2
 ===
 
-## Übersicht
+# Übersicht
 
 Die LB2 deckt die Kapitel [20-Infrastuktur](../20-Infrastruktur/) und [25-Sicherheit](../25-Sicherheit/). <br>
 
@@ -16,7 +16,7 @@ Als Hilfe, habe ich folgende Dokumentation verwendet: <br>
 https://www.fosslinux.com/61850/how-to-set-up-cups-print-server-on-ubuntu.htm
 *** 
 
-## Installation
+# Installation
 
 ### Vorbereitung:
 
@@ -127,8 +127,9 @@ Und wie wir im folgenden Screenshot sehen funktioniert alles:
 
 <img src="../images/LB2-6.png"  width="600">
 
+<br>
 
-## Sicherheit
+# Sicherheit
 Im nächsten Schritt versuchen wir unsere Vagrant Umgebung im Thema Sicherheit zu optimieren. <br>
 
 Bei der Installation von Ubuntu wird standartmässig die ufw Firewall direkt mitinstalliert. Mithilfe von ufw können wir den Zugriff von Aussen und von Innen nach Aussen regulieren. <br>
@@ -182,7 +183,70 @@ Nach und wir sehen nachdem Starten der Vagrantbox sind auch die Firewall Rules a
 
 > Da unsere Umgebung nur aus einem System besteht macht es keinen Sinn einen Reverse Proxy einzurichten. Im Fall einer grösseren VM Umgebung, würde ein Reverse Proxy aus sicherheitsgründen Sinn machen.
 
+<br>
+
+## Reverse Proxy
+***
+### Übersicht:
+Ein Reverse Proxy dient dazu mehrere Systeme hinter einem System zu verbergen. Man stellt sozusagen nur den Reverse Proxy nach aussen und reguliert von dort aus den Zugriff und die Last auf den Servern. <br>
+
+In diesem Fall haben wir jedoch nur unseren Cups Server, jedoch reicht dies aus, um die Funktion des Reverse Proxy Servers zu demonstrieren. <br>
+
+### CUPS Netz Config:
+Davor haben wir unsere CUPS VM genattet und eine Portweiterleitung eingerichtet, wodurch wir von unserem Host System direkt auf das Webinterface zugreiffen konnten als würde der Dienst auf dem Host laufen. <br>
+
+Für den nächsten Schritt stellen wir den CUPS Server in ein privates Netzwerk und vergeben ihm eine eigene IP-Adresse.
+
+```ruby
+config.vm.network "private_network", ip: "192.168.1.10", netmask: "255.255.255.0
+```
+
+### Reverse Proxy:
+
+Jetzt richten wir unsere Apache Reverse Proxy ein. <br>
+Die VagrantBox liegt unter `LB2\reverseproxy`. <br>
+
+Ich habe die VagrantBox wie immer zuerst einmal manuell erstellt und alles eingerichtet. Folgende Shell-Commands werden nacher im Vagrantfile definiert: <br>
+
+```bash
+sudo apt-get install libapache2-mod-proxy-html libxml2-dev -y
+sudo a2enmod proxy
+sudo a2enmod proxy_html
+sudo a2enmod proxy_http
+echo "ServerName localhost" | sudo tee -a /etc/apach2/apache2.conf
+sudo cp /vagrant/config/reverse-proxy.conf /etc/apache2/sites-available/reverse-proxy.conf
+sudo a2ensite reverse-proxy.conf
+sudo systemctl restart apache2
+```
+
+#### Netz Config:
+
+```ruby
+config.vm.network "forwarded_port", guest: 80, host: 80 
+
+# Create a private network, which allows host-only access to the machine
+# using a specific IP.
+config.vm.network "private_network", ip: "192.168.1.20", netmask: "255.255.255.0
+```
+
+### Apache2 conf
+
+Damit apache die Anfragen an das CUPS Webinterface weiterleitet, müssen wir dies zuerst noch die config anpassen. <br>
+
+Dafür erstelle ich das file `/etc/apache2/sites-available/reverse-proxy.conf`. <br>
+
+Unter `ServerName` definiere ich, wie ich den Reverse Proxy erreiche und unter `ProxyPass` und `ProxyPassReverse`, an welche Adresse der Reverse Proxy die Anfrage weiterleiten soll. (In unserem Fall das Cups Interface: 192.168.1.10:631) <br>
+
+<img src="../images/LB2-8.png"  width="600">
+
+## Ergebnis:
+Nachdem ich alles konfiguriert habe starte ich beide Vagrantboxen von neu.
+<img src="../images/LB2-9.png"  width="600">
+<img src="../images/LB2-10.png"  width="600">
+<br>
+Wir sehen, es hat funktioniert. Im ersten Bild rufen wir die IP des Reverse-Proxys auf und die default Apache Seite erscheint. Wenn wir aber `localhost` eingeben wie wir in der config definiert haben, werden wir schön auf das CUPS Webinterface weitergeleitet.
+
+
 
 # Reflexion
-
 Ich habe während der LB2 einige Sachen dazu gelernt. Z.B wusste ich nicht, dass ich die Portweiterleitung im Vagrantfile deklarieren muss, damit der Zugriff von meinem Hostsystem auf die VM funktioniert. Ausserdem hatte ich davor nur Erfahrungen mit SUSE Linux und RedHat based Distributionen wie AlmaLinux, Fedora, CentOS usw, welche alle **.rpm** Pakete verwenden und nicht **.deb**. Daher gab es auch einige Unterschiede mit den Kommandos und Parametern und auch mit den Binaries der installierten Paketen. Ich musste vieles nochmals nachschauen da ich nicht daran gewohnt war. Aber ich habe mich auch extra dafür entschieden, einmal auf einer ganz anderen Distribution zu arbeiten als ich sonst gewohnt bin. <br>
