@@ -7,7 +7,7 @@ Die LB2 deckt die Kapitel [20-Infrastuktur](../20-Infrastruktur/) und [25-Sicher
 
 Für die Automatisierung eines Serverdienstes habe ich mich für CUPS entschieden. Mit CUPS können wir einen Printserver einrichten, der Printjobs annimmt und sie an die jeweiligen Printerqueues sendet. <br>
 
-### Aktueller Wissenstand:
+## Aktueller Wissenstand:
 Ich habe bereits während meines zweiten Lehrjahrs im Unix Team verschiedene Serverdienste zum Testen installieren müssen. Dort habe ich auchschon einmal den CUPS Printerdienst installiert und eine Print2PDF Queue eingerichtet, mit dem ich dann von einem anderen Gerät Dateien als PDF speichern konnte.
 
 Das Vagrantfile befindet sich im Ordner ``Vagrant\LB2``. <br>
@@ -245,8 +245,6 @@ Nachdem ich alles konfiguriert habe starte ich beide Vagrantboxen von neu.
 <img src="../images/LB2-10.png"  width="600">
 <br>
 Wir sehen, es hat funktioniert. Im ersten Bild rufen wir die IP des Reverse-Proxys auf und die default Apache Seite erscheint. Wenn wir aber `localhost` eingeben wie wir in der config definiert haben, werden wir schön auf das CUPS Webinterface weitergeleitet.
-
-
 
 # Reflexion
 Ich habe während der LB2 einige Sachen dazu gelernt. Z.B wusste ich nicht, dass ich die Portweiterleitung im Vagrantfile deklarieren muss, damit der Zugriff von meinem Hostsystem auf die VM funktioniert. Ausserdem hatte ich davor nur Erfahrungen mit SUSE Linux und RedHat based Distributionen wie AlmaLinux, Fedora, CentOS usw, welche alle **.rpm** Pakete verwenden und nicht **.deb**. Daher gab es auch einige Unterschiede mit den Kommandos und Parametern und auch mit den Binaries der installierten Paketen. Ich musste vieles nochmals nachschauen da ich nicht daran gewohnt war. Aber ich habe mich auch extra dafür entschieden, einmal auf einer ganz anderen Distribution zu arbeiten als ich sonst gewohnt bin. <br>
